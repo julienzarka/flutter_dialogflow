@@ -1,4 +1,5 @@
 # Dialogflow v2 apis for flutter applications.
+Forked from https://github.com/VictorRancesCode/flutter_dialogflow
 
 ![Dialogflow](https://github.com/diegodalbosco/flutter_dialogflow/raw/master/dialogflow.png) 
 
