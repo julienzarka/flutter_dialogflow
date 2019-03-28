@@ -1,4 +1,4 @@
-import 'package:flutter_dialogflow/flutter_dialogflow.dart';
+import 'package:flutter_dialogflow_v2/flutter_dialogflow.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(new MyApp());

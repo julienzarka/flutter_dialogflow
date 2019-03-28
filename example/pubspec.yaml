@@ -4,8 +4,8 @@ description: A new Flutter project.
 dependencies:
   flutter:
     sdk: flutter
-  flutter_dialogflow:
-        path: ../
+  flutter_dialogflow_v2:
+    path: ../
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.0

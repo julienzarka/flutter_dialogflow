@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:flutter_dialogflow/v2/auth_google.dart';
-import 'package:flutter_dialogflow/v2/detect_intent_request.dart';
+import 'package:flutter_dialogflow_v2/v2/auth_google.dart';
+import 'package:flutter_dialogflow_v2/v2/detect_intent_request.dart';
 import 'package:meta/meta.dart';
 
 class Intent {
