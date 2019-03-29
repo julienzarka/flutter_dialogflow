@@ -66,6 +66,12 @@ class Context {
     this.parameters,
   });
 
+  static Context fromJson(Map<String, dynamic> json) => Context(
+        name: json['name'],
+        lifespanCount: json['lifespanCount'],
+        parameters: json['parameters'],
+      );
+
   Map<String, dynamic> toJson() => <String, dynamic>{
         'name': name,
         'lifespanCount': lifespanCount,
