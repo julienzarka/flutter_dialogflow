@@ -1,5 +1,7 @@
+import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart';
+
 /// The image response message.
-class Image {
+class Image extends Message {
   /// The public URI to an image file.
   final String imageUri;
 
@@ -7,17 +9,22 @@ class Image {
   final String accessibilityText;
 
   Image({
+    String platform,
     this.imageUri,
     this.accessibilityText,
-  });
+  }) : super(platform: platform);
 
   static Image fromJson(Map<String, dynamic> json) => Image(
-        imageUri: json['imageUri'],
-        accessibilityText: json['accessibilityText'],
+        platform: json['platform'],
+        imageUri: json['image']['imageUri'],
+        accessibilityText: json['image']['accessibilityText'],
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'imageUri': imageUri,
-        'accessibilityText': accessibilityText,
+        'platform': platform,
+        'image': {
+          'imageUri': imageUri,
+          'accessibilityText': accessibilityText,
+        }
       };
 }

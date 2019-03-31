@@ -1,17 +1,24 @@
+import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart';
+
 /// The text response message.
-class Text {
+class Text extends Message {
   /// The collection of the agent's responses.
   final List<String> text;
 
   Text({
+    String platform,
     this.text,
-  });
+  }) : super(platform: platform);
 
   static Text fromJson(Map<String, dynamic> json) => Text(
-        text: List.from(json['text']),
+        platform: json['platform'],
+        text: List.from(json['text']['text']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'text': text,
+        'platform': platform,
+        'text': {
+          'text': text,
+        }
       };
 }

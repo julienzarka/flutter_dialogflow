@@ -1,7 +1,7 @@
 import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart';
 
 /// The basic card message. Useful for displaying information.
-class BasicCard {
+class BasicCard extends Message {
   /// The title of the card.
   final String title;
 
@@ -18,29 +18,34 @@ class BasicCard {
   final List<BasicCardButton> buttons;
 
   BasicCard({
+    String platform,
     this.title,
     this.subtitle,
     this.formattedText,
     this.image,
     this.buttons,
-  });
+  }) : super(platform: platform);
 
   static BasicCard fromJson(Map<String, dynamic> json) => BasicCard(
-        title: json['title'],
-        subtitle: json['subtitle'],
-        formattedText: json['formattedText'],
-        image: Image.fromJson(json['image']),
-        buttons: List.from(json['buttons'])
+        platform: json['platform'],
+        title: json['basicCard']['title'],
+        subtitle: json['basicCard']['subtitle'],
+        formattedText: json['basicCard']['formattedText'],
+        image: Image.fromJson(json['basicCard']['image']),
+        buttons: List.from(json['basicCard']['buttons'])
             .map((b) => BasicCardButton.fromJson(b))
             .toList(),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'subtitle': subtitle,
-        'formattedText': formattedText,
-        'image': image == null ? null : image.toJson(),
-        'buttons':
-            buttons == null ? null : buttons.map((b) => b.toJson()).toList(),
+        'platform': platform,
+        'basicCard': {
+          'title': title,
+          'subtitle': subtitle,
+          'formattedText': formattedText,
+          'image': image == null ? null : image.toJson(),
+          'buttons':
+              buttons == null ? null : buttons.map((b) => b.toJson()).toList(),
+        }
       };
 }

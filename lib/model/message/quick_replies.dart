@@ -1,5 +1,7 @@
+import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart';
+
 /// The quick replies response message.
-class QuickReplies {
+class QuickReplies extends Message {
   /// The title of the collection of quick replies.
   final String title;
 
@@ -7,17 +9,22 @@ class QuickReplies {
   final List<String> quickReplies;
 
   QuickReplies({
+    String platform,
     this.title,
     this.quickReplies,
-  });
+  }) : super(platform: platform);
 
   static QuickReplies fromJson(Map<String, dynamic> json) => QuickReplies(
-        title: json['title'],
-        quickReplies: List.from(json['quickReplies']),
+        platform: json['platform'],
+        title: json['quickReplies']['title'],
+        quickReplies: List.from(json['quickReplies']['quickReplies']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'quickReplies': quickReplies,
+        'platform': platform,
+        'quickReplies': {
+          'title': title,
+          'quickReplies': quickReplies,
+        }
       };
 }

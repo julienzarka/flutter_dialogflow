@@ -1,7 +1,7 @@
 import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart';
 
 /// The card response message.
-class Card {
+class Card extends Message {
   /// The title of the card.
   final String title;
 
@@ -15,26 +15,31 @@ class Card {
   final List<CardButton> buttons;
 
   Card({
+    String platform,
     this.title,
     this.subtitle,
     this.imageUri,
     this.buttons,
-  });
+  }) : super(platform: platform);
 
   static Card fromJson(Map<String, dynamic> json) => Card(
-        title: json['title'],
-        subtitle: json['subtitle'],
-        imageUri: json['imageUri'],
-        buttons: List.from(json['buttons'])
+        platform: json['platform'],
+        title: json['card']['title'],
+        subtitle: json['card']['subtitle'],
+        imageUri: json['card']['imageUri'],
+        buttons: List.from(json['card']['buttons'])
             .map((b) => CardButton.fromJson(b))
             .toList(),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'title': title,
-        'subtitle': subtitle,
-        'imageUri': imageUri,
-        'buttons':
-            buttons == null ? null : buttons.map((b) => b.toJson()).toList(),
+        'platform': platform,
+        'card': {
+          'title': title,
+          'subtitle': subtitle,
+          'imageUri': imageUri,
+          'buttons':
+              buttons == null ? null : buttons.map((b) => b.toJson()).toList(),
+        }
       };
 }
