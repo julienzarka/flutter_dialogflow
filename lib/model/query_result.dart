@@ -72,7 +72,7 @@ class QueryResult {
         allRequiredParamsPresent: json['allRequiredParamsPresent'],
         fulfillmentText: json['fulfillmentText'],
         fulfillmentMessages: List.from(json['fulfillmentMessages'])
-            .map((m) => Message.fromJson(m))
+            .map((m) => messageFromJson(m))
             .toList(),
         webhookSource: json['webhookSource'],
         webhookPayload: json['webhookPayload'],

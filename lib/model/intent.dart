@@ -102,9 +102,8 @@ class Intent {
         parameters: List.from(json['parameters'])
             .map((p) => Parameter.fromJson(p))
             .toList(),
-        messages: List.from(json['messages'])
-            .map((m) => Message.fromJson(m))
-            .toList(),
+        messages:
+            List.from(json['messages']).map((m) => messageFromJson(m)).toList(),
         defaultResponsePlatforms: json['defaultResponsePlatforms'],
         rootFollowupIntentName: json['rootFollowupIntentName'],
         parentFollowupIntentName: json['parentFollowupIntentName'],

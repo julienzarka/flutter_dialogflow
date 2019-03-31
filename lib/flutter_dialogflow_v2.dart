@@ -1,6 +1,7 @@
 library flutter_dialogflow_v2;
 
 export 'utils/language.dart';
+export 'utils/map_messages.dart';
 
 export 'model/audio_encoding.dart';
 export 'model/audio_input_config.dart';
