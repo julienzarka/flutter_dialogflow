@@ -42,29 +42,41 @@ flutter:
 ```
 * Import dialogflow_v2
 ``` dart
-import 'package:flutter_dialogflow_v2/dialogflow.dart';
+import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart';
 ```
 * Code examples
 
 ``` dart
-  AuthGoogle authGoogle = await AuthGoogle(fileJson: 'assets/your_file.json').build();
-  Dialogflow dialogflow = Dialogflow(authGoogle: authGoogle, language: Language.english);
-  AIResponse response = await dialogflow.detectIntent('Hello!');
+AuthGoogle authGoogle = await AuthGoogle(fileJson: 'assets/your_file.json').build();
+Dialogflow dialogflow = Dialogflow(authGoogle: authGoogle, sessionId: '123456');
+DetectIntentResponse response = await dialogflow.detectIntent(
+  DetectIntentRequest(
+    queryInput: QueryInput(
+      text: TextInput(
+        text: 'Hello from flutter!',
+        languageCode: Language.english,
+      ),
+    ),
+    queryParams: QueryParameters(
+      resetContexts: true,
+    ),
+  ),
+);
 ```
 
 * or if you simply want to simple query some text:
 ``` dart
-  AuthGoogle authGoogle = await AuthGoogle(fileJson: 'assets/your_file.json').build();
-  Dialogflow dialogflow = Dialogflow(authGoogle: authGoogle, language: Language.english);
-  AIResponse response = await dialogflow.detectIntentFromText('Hello!');
+AuthGoogle authGoogle = await AuthGoogle(fileJson: 'assets/your_file.json').build();
+Dialogflow dialogflow = Dialogflow(authGoogle: authGoogle, sessionId: '123456');
+DetectIntentResponse response = await dialogflow.detectIntentFromText('Hello!');
 ```
 
 * get text response
 ``` dart
-  response.getMessage();
+response.queryResult.queryText;
 ```
 
 * or list of messages
 ``` dart
-  response.getListMessage();
+response.queryResult.fulfillmentMessages;
 ```
