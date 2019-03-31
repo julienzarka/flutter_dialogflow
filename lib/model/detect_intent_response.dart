@@ -1,7 +1,7 @@
 import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart';
 
 /// If successful, the response body contains data with this structure.
-class DetectIntentResult {
+class DetectIntentResponse {
   /// The unique identifier of the response. It can be used to locate a response in the training example set or for reporting issues.
   final String responseId;
 
@@ -11,14 +11,14 @@ class DetectIntentResult {
   /// Specifies the status of the webhook request.
   final Status webhookStatus;
 
-  DetectIntentResult({
+  DetectIntentResponse({
     this.responseId,
     this.queryResult,
     this.webhookStatus,
   });
 
-  static DetectIntentResult fromJson(Map<String, dynamic> json) =>
-      DetectIntentResult(
+  static DetectIntentResponse fromJson(Map<String, dynamic> json) =>
+      DetectIntentResponse(
         queryResult: QueryResult.fromJson(json['queryResult']),
         responseId: json['responseId'],
         webhookStatus: Status.fromJson(json['webhookStatus']),

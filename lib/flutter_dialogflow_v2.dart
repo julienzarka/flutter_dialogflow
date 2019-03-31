@@ -6,7 +6,7 @@ export 'model/audio_encoding.dart';
 export 'model/audio_input_config.dart';
 export 'model/context.dart';
 export 'model/detect_intent_request.dart';
-export 'model/detect_intent_result.dart';
+export 'model/detect_intent_response.dart';
 export 'model/entity.dart';
 export 'model/entity_override_mode.dart';
 export 'model/event_input.dart';
