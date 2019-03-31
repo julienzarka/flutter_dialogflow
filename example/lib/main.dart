@@ -1,4 +1,4 @@
-import 'package:flutter_dialogflow_v2/flutter_dialogflow.dart';
+import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart' as df;
 import 'package:flutter/material.dart';
 
 void main() => runApp(new MyApp());
@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: _textController,
                 onSubmitted: _handleSubmitted,
                 decoration:
-                    new InputDecoration.collapsed(hintText: "Send a message"),
+                    new InputDecoration.collapsed(hintText: 'Send a message'),
               ),
             ),
             new Container(
@@ -58,17 +58,16 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void Response(query) async {
+  void response(query) async {
     _textController.clear();
-    AuthGoogle authGoogle =
-        await AuthGoogle(fileJson: "Asset Your File Json").build();
-    Dialogflow dialogflow =
-        Dialogflow(authGoogle: authGoogle, language: Language.english);
-    AIResponse response = await dialogflow.detectIntent(query);
+    df.AuthGoogle authGoogle =
+        await df.AuthGoogle(fileJson: 'assets/project-id.json').build();
+    df.Dialogflow dialogflow =
+        df.Dialogflow(authGoogle: authGoogle, sessionId: '123456');
+    df.DetectIntentResponse response = await dialogflow.detectIntent(query);
     ChatMessage message = new ChatMessage(
-      text: response.getMessage() ??
-          new CardDialogflow(response.getListMessage()[0]).title,
-      name: "Bot",
+      text: response.queryResult.fulfillmentText,
+      name: 'Bot',
       type: false,
     );
     setState(() {
@@ -80,20 +79,20 @@ class _MyHomePageState extends State<MyHomePage> {
     _textController.clear();
     ChatMessage message = new ChatMessage(
       text: text,
-      name: "Rances",
+      name: 'Rances',
       type: true,
     );
     setState(() {
       _messages.insert(0, message);
     });
-    Response(text);
+    response(text);
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Dialogflow V2"),
+        title: new Text('Dialogflow V2'),
       ),
       body: new Column(children: <Widget>[
         new Flexible(
@@ -124,7 +123,7 @@ class ChatMessage extends StatelessWidget {
     return <Widget>[
       new Container(
         margin: const EdgeInsets.only(right: 16.0),
-        child: new CircleAvatar(child: new Image.asset("img/placeholder.png")),
+        child: new CircleAvatar(child: new Image.asset('img/placeholder.png')),
       ),
       new Expanded(
         child: new Column(
