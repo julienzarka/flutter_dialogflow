@@ -20,11 +20,13 @@ class Status {
     this.details,
   });
 
-  static Status fromJson(Map<String, dynamic> json) => Status(
-        code: json['code'],
-        message: json['message'],
-        details: List.from(json['details']),
-      );
+  static Status fromJson(Map<String, dynamic> json) => json == null
+      ? null
+      : Status(
+          code: json['code'],
+          message: json['message'],
+          details: json['details'] == null ? null : List.from(json['details']),
+        );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         'code': code,

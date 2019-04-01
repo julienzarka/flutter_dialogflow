@@ -89,27 +89,40 @@ class Intent {
         priority: json['priority'],
         isFallback: json['isFallback'],
         mlDisabled: json['mlDisabled'],
-        inputContextNames: List.from(json['inputContextNames']),
-        events: List.from(json['events']),
-        trainingPhrases: List.from(json['trainingPhrases'])
-            .map((t) => TrainingPhrase.fromJson(t))
-            .toList(),
+        inputContextNames: json['inputContextNames'] == null
+            ? null
+            : List.from(json['inputContextNames']),
+        events: json['events'] == null ? null : List.from(json['events']),
+        trainingPhrases: json['trainingPhrases'] == null
+            ? null
+            : List.from(json['trainingPhrases'])
+                .map((t) => TrainingPhrase.fromJson(t))
+                .toList(),
         action: json['action'],
-        outputContexts: List.from(json['outputContexts'])
-            .map((c) => Context.fromJson(c))
-            .toList(),
+        outputContexts: json['outputContexts'] == null
+            ? null
+            : List.from(json['outputContexts'])
+                .map((c) => Context.fromJson(c))
+                .toList(),
         resetContexts: json['resetContexts'],
-        parameters: List.from(json['parameters'])
-            .map((p) => Parameter.fromJson(p))
-            .toList(),
-        messages:
-            List.from(json['messages']).map((m) => messageFromJson(m)).toList(),
+        parameters: json['parameters'] == null
+            ? null
+            : List.from(json['parameters'])
+                .map((p) => Parameter.fromJson(p))
+                .toList(),
+        messages: json['messages'] == null
+            ? null
+            : List.from(json['messages'])
+                .map((m) => messageFromJson(m))
+                .toList(),
         defaultResponsePlatforms: json['defaultResponsePlatforms'],
         rootFollowupIntentName: json['rootFollowupIntentName'],
         parentFollowupIntentName: json['parentFollowupIntentName'],
-        followupIntentInfo: List.from(json['followupIntentInfo'])
-            .map((f) => FollowupIntentInfo.fromJson(f))
-            .toList(),
+        followupIntentInfo: json['followupIntentInfo'] == null
+            ? null
+            : List.from(json['followupIntentInfo'])
+                .map((f) => FollowupIntentInfo.fromJson(f))
+                .toList(),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

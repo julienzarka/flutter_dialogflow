@@ -26,7 +26,7 @@ class Item {
         info: SelectItemInfo.fromJson(json['info']),
         title: json['title'],
         description: json['description'],
-        image: Image.fromJson(json['image']),
+        image: json['image'] == null ? null : Image.fromJson(json['image']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

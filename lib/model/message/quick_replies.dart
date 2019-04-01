@@ -17,7 +17,9 @@ class QuickReplies extends Message {
   static QuickReplies fromJson(Map<String, dynamic> json) => QuickReplies(
         platform: json['platform'],
         title: json['quickReplies']['title'],
-        quickReplies: List.from(json['quickReplies']['quickReplies']),
+        quickReplies: json['quickReplies']['quickReplies'] == null
+            ? null
+            : List.from(json['quickReplies']['quickReplies']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

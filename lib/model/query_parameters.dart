@@ -31,14 +31,20 @@ class QueryParameters {
 
   static QueryParameters fromJson(Map<String, dynamic> json) => QueryParameters(
         timeZone: json['timeZone'],
-        geoLocation: LatLng.fromJson(json['geoLocation']),
-        contexts: List.from(json['contexts'])
-            .map((c) => Context.fromJson(c))
-            .toList(),
+        geoLocation: json['geoLocation'] == null
+            ? null
+            : LatLng.fromJson(json['geoLocation']),
+        contexts: json['contexts'] == null
+            ? null
+            : List.from(json['contexts'])
+                .map((c) => Context.fromJson(c))
+                .toList(),
         resetContexts: json['resetContexts'],
-        sessionEntityTypes: List.from(json['sessionEntityTypes'])
-            .map((s) => SessionEntityType.fromJson(s))
-            .toList(),
+        sessionEntityTypes: json['sessionEntityTypes'] == null
+            ? null
+            : List.from(json['sessionEntityTypes'])
+                .map((s) => SessionEntityType.fromJson(s))
+                .toList(),
         payload: json['payload'],
       );
 

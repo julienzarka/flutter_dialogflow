@@ -18,9 +18,11 @@ class ListSelect extends Message {
   static ListSelect fromJson(Map<String, dynamic> json) => ListSelect(
         platform: json['platform'],
         title: json['listSelect']['title'],
-        items: List.from(json['listSelect']['items'])
-            .map((i) => Item.fromJson(i))
-            .toList(),
+        items: json['listSelect']['items'] == null
+            ? null
+            : List.from(json['listSelect']['items'])
+                .map((i) => Item.fromJson(i))
+                .toList(),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

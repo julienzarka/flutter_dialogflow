@@ -13,9 +13,11 @@ class SimpleResponses extends Message {
 
   static SimpleResponses fromJson(Map<String, dynamic> json) => SimpleResponses(
         platform: json['platform'],
-        simpleResponses: List.from(json['simpleResponses']['simpleResponses'])
-            .map((s) => SimpleResponse.fromJson(s))
-            .toList(),
+        simpleResponses: json['simpleResponses']['simpleResponses'] == null
+            ? null
+            : List.from(json['simpleResponses']['simpleResponses'])
+                .map((s) => SimpleResponse.fromJson(s))
+                .toList(),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

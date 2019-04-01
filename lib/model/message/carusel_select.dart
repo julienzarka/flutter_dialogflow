@@ -13,9 +13,11 @@ class CaruselSelect extends Message {
 
   static CaruselSelect fromJson(Map<String, dynamic> json) => CaruselSelect(
         platform: json['platform'],
-        items: List.from(json['caruselSelect']['items'])
-            .map((i) => Item.fromJson(i))
-            .toList(),
+        items: json['caruselSelect']['items'] == null
+            ? null
+            : List.from(json['caruselSelect']['items'])
+                .map((i) => Item.fromJson(i))
+                .toList(),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

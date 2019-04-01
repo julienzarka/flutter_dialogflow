@@ -27,9 +27,11 @@ class Card extends Message {
         title: json['card']['title'],
         subtitle: json['card']['subtitle'],
         imageUri: json['card']['imageUri'],
-        buttons: List.from(json['card']['buttons'])
-            .map((b) => CardButton.fromJson(b))
-            .toList(),
+        buttons: json['card']['buttons'] == null
+            ? null
+            : List.from(json['card']['buttons'])
+                .map((b) => CardButton.fromJson(b))
+                .toList(),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

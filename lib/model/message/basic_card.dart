@@ -31,10 +31,14 @@ class BasicCard extends Message {
         title: json['basicCard']['title'],
         subtitle: json['basicCard']['subtitle'],
         formattedText: json['basicCard']['formattedText'],
-        image: Image.fromJson(json['basicCard']['image']),
-        buttons: List.from(json['basicCard']['buttons'])
-            .map((b) => BasicCardButton.fromJson(b))
-            .toList(),
+        image: json['basicCard']['image'] == null
+            ? null
+            : Image.fromJson(json['basicCard']['image']),
+        buttons: json['basicCard']['buttons'] == null
+            ? null
+            : List.from(json['basicCard']['buttons'])
+                .map((b) => BasicCardButton.fromJson(b))
+                .toList(),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

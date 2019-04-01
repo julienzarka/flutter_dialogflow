@@ -23,8 +23,11 @@ class SessionEntityType {
       SessionEntityType(
         name: json['name'],
         entityOverrideMode: json['entityOverrideMode'],
-        entities:
-            List.from(json['entities']).map((e) => Entity.fromJson(e)).toList(),
+        entities: json['entities'] == null
+            ? null
+            : List.from(json['entities'])
+                .map((e) => Entity.fromJson(e))
+                .toList(),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

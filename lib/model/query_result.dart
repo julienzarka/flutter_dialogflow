@@ -41,7 +41,7 @@ class QueryResult {
   final Intent intent;
 
   /// The intent detection confidence. Values range from 0.0 (completely uncertain) to 1.0 (completely certain). If there are multiple knowledgeAnswers messages, this value is set to the greatest knowledgeAnswers.match_confidence value in the list.
-  final double intentDetectionConfidence;
+  final num intentDetectionConfidence;
 
   /// The free-form diagnostic info. For example, this field could contain webhook call latency. The string keys of the Struct's fields map can change without notice.
   final Map<String, dynamic> diagnosticInfo; // TODO struct
@@ -71,17 +71,21 @@ class QueryResult {
         parameters: json['parameters'],
         allRequiredParamsPresent: json['allRequiredParamsPresent'],
         fulfillmentText: json['fulfillmentText'],
-        fulfillmentMessages: List.from(json['fulfillmentMessages'])
-            .map((m) => messageFromJson(m))
-            .toList(),
+        fulfillmentMessages: json['fulfillmentMessages'] == null
+            ? null
+            : List.from(json['fulfillmentMessages'])
+                .map((m) => messageFromJson(m))
+                .toList(),
         webhookSource: json['webhookSource'],
         webhookPayload: json['webhookPayload'],
-        outputContexts: List.from(json['outputContexts'])
-            .map((c) => Context.fromJson(c))
-            .toList(),
-        intent: Intent.fromJson(json['intent']),
+        outputContexts: json['outputContexts'] == null
+            ? null
+            : List.from(json['outputContexts'])
+                .map((c) => Context.fromJson(c))
+                .toList(),
+        intent: json['intent'] == null ? null : Intent.fromJson(json['intent']),
         intentDetectionConfidence: json['intentDetectionConfidence'],
-        diagnosticInfo: json['intentDetectionConfidence'],
+        diagnosticInfo: json['diagnosticInfo'],
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

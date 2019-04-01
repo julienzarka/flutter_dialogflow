@@ -16,7 +16,9 @@ class BasicCardButton {
 
   static BasicCardButton fromJson(Map<String, dynamic> json) => BasicCardButton(
         title: json['title'],
-        openUriAction: OpenUriAction.fromJson(json['openUriAction']),
+        openUriAction: json['openUriAction'] == null
+            ? null
+            : OpenUriAction.fromJson(json['openUriAction']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
