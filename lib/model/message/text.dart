@@ -12,7 +12,9 @@ class Text extends Message {
 
   static Text fromJson(Map<String, dynamic> json) => Text(
         platform: json['platform'],
-        text: List.from(json['text']['text']),
+        text: json['text']['text'] == null
+            ? null
+            : List.from(json['text']['text']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

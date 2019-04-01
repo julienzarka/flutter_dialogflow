@@ -19,9 +19,13 @@ class DetectIntentResponse {
 
   static DetectIntentResponse fromJson(Map<String, dynamic> json) =>
       DetectIntentResponse(
-        queryResult: QueryResult.fromJson(json['queryResult']),
+        queryResult: json['queryResult'] == null
+            ? null
+            : QueryResult.fromJson(json['queryResult']),
         responseId: json['responseId'],
-        webhookStatus: Status.fromJson(json['webhookStatus']),
+        webhookStatus: json['webhookStatus'] == null
+            ? null
+            : Status.fromJson(json['webhookStatus']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

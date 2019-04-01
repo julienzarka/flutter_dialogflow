@@ -44,7 +44,7 @@ class Parameter {
         defaultValue: json['defaultValue'],
         entityTypeDisplayName: json['entityTypeDisplayName'],
         mandatory: json['mandatory'],
-        prompts: List.from(json['prompts']),
+        prompts: json['prompts'] == null ? null : List.from(json['prompts']),
         isList: json['isList'],
       );
 

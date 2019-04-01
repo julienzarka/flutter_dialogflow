@@ -13,9 +13,11 @@ class Suggestions extends Message {
 
   static Suggestions fromJson(Map<String, dynamic> json) => Suggestions(
         platform: json['platform'],
-        suggestions: List.from(json['suggestions']['suggestions'])
-            .map((s) => Suggestion.fromJson(s))
-            .toList(),
+        suggestions: json['suggestions']['suggestions'] == null
+            ? null
+            : List.from(json['suggestions']['suggestions'])
+                .map((s) => Suggestion.fromJson(s))
+                .toList(),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

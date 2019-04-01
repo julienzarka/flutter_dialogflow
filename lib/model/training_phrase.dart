@@ -36,7 +36,9 @@ class TrainingPhrase {
   static TrainingPhrase fromJson(Map<String, dynamic> json) => TrainingPhrase(
         name: json['name'],
         type: json['type'],
-        parts: List.from(json['parts']).map((p) => Part.fromJson(p)).toList(),
+        parts: json['parts'] == null
+            ? null
+            : List.from(json['parts']).map((p) => Part.fromJson(p)).toList(),
         timesAddedCount: json['timesAddedCount'],
       );
 

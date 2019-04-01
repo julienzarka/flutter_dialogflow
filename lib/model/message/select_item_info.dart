@@ -15,7 +15,7 @@ class SelectItemInfo {
 
   static SelectItemInfo fromJson(Map<String, dynamic> json) => SelectItemInfo(
         key: json['key'],
-        synonyms: List.from(json['synonyms']),
+        synonyms: json['synonyms'] == null ? null : List.from(json['synonyms']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

@@ -24,7 +24,7 @@ class Entity {
 
   static Entity fromJson(Map<String, dynamic> json) => Entity(
         value: json['value'],
-        synonyms: List.from(json['synonyms']),
+        synonyms: json['synonyms'] == null ? null : List.from(json['synonyms']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

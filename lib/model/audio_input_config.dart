@@ -26,7 +26,8 @@ class InputAudioConfig {
         audioEncoding: json['audioEncoding'],
         sampleRateHertz: json['sampleRateHertz'],
         languageCode: json['languageCode'],
-        phraseHints: List.from(json['phraseHints']),
+        phraseHints:
+            json['phraseHints'] == null ? null : List.from(json['phraseHints']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

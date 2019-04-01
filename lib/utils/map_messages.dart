@@ -1,6 +1,6 @@
 import 'package:flutter_dialogflow_v2/flutter_dialogflow_v2.dart';
 
-dynamic messageFromJson(Map<String, dynamic> json) {
+Message messageFromJson(Map<String, dynamic> json) {
   if (json['text'] != null) return Text.fromJson(json);
   if (json['image'] != null) return Image.fromJson(json);
   if (json['quickReplies'] != null) return QuickReplies.fromJson(json);
@@ -13,4 +13,5 @@ dynamic messageFromJson(Map<String, dynamic> json) {
     return LinkOutSuggestion.fromJson(json);
   if (json['listSelect'] != null) return ListSelect.fromJson(json);
   if (json['carouselSelect'] != null) return CaruselSelect.fromJson(json);
+  return null;
 }

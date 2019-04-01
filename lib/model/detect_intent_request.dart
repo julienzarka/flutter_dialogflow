@@ -23,8 +23,12 @@ class DetectIntentRequest {
 
   static DetectIntentRequest fromJson(Map<String, dynamic> json) =>
       DetectIntentRequest(
-        queryParams: QueryParameters.fromJson(json['queryParams']),
-        queryInput: QueryInput.fromJson(json['queryInput']),
+        queryParams: json['queryParams'] == null
+            ? null
+            : QueryParameters.fromJson(json['queryParams']),
+        queryInput: json['queryInput'] == null
+            ? null
+            : QueryInput.fromJson(json['queryInput']),
         inputAudio: json['inputAudio'],
       );
 

@@ -28,9 +28,12 @@ class QueryInput {
   }
 
   static QueryInput fromJson(Map<String, dynamic> json) => QueryInput(
-        audioConfig: InputAudioConfig.fromJson(json['audioConfig']),
-        text: TextInput.fromJson(json['text']),
-        event: EventInput.fromJson(json['event']),
+        audioConfig: json['audioConfig'] == null
+            ? null
+            : InputAudioConfig.fromJson(json['audioConfig']),
+        text: json['text'] == null ? null : TextInput.fromJson(json['text']),
+        event:
+            json['event'] == null ? null : EventInput.fromJson(json['event']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
