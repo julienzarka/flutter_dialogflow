@@ -14,7 +14,7 @@ class Text extends Message {
         platform: json['platform'],
         text: json['text']['text'] == null
             ? null
-            : List.from(json['text']['text']),
+            : List<String>.from(json['text']['text']),
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{

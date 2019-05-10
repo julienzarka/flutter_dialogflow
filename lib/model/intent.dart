@@ -46,7 +46,7 @@ class Intent {
   final List<Message> messages;
 
   /// The list of platforms for which the first response will be taken from among the messages assigned to the DEFAULT_PLATFORM. See [Platform].
-  final String defaultResponsePlatforms;
+  final List<String> defaultResponsePlatforms;
 
   /// Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output.
   ///
@@ -115,7 +115,9 @@ class Intent {
             : List.from(json['messages'])
                 .map((m) => messageFromJson(m))
                 .toList(),
-        defaultResponsePlatforms: json['defaultResponsePlatforms'],
+        defaultResponsePlatforms: json['defaultResponsePlatforms'] == null
+            ? null
+            : List<String>.from(json['defaultResponsePlatforms']),
         rootFollowupIntentName: json['rootFollowupIntentName'],
         parentFollowupIntentName: json['parentFollowupIntentName'],
         followupIntentInfo: json['followupIntentInfo'] == null
