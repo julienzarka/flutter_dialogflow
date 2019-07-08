@@ -9,9 +9,9 @@ issue_tracker: https://github.com/diegodalbosco/flutter_dialogflow/issues
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.11.3+16
-  googleapis_auth: ^0.2.6
-  meta: ^1.1.6
+  http: any
+  googleapis_auth: any
+  meta: any
 
 dev_dependencies:
   test:
